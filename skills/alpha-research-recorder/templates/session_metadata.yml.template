@@ -1,0 +1,48 @@
+# =====================================================
+# 会话元数据模板
+# =====================================================
+# 使用说明：
+# 1. 复制此文件至研究目录
+# 2. 重命名为 session_metadata.yml
+# 3. 填写完整信息
+# =====================================================
+
+session:
+  id: "YYYYMMDD_<主题>_<LLM>"  # 例如: 20260106_analyst_sentiment_sonnet
+  name: "<研究主题名称>"
+  created_at: "YYYY-MM-DDTHH:MM:SSZ"  # ISO 8601 格式
+  llm_model: "<模型名称>"
+
+research_objective:
+  # 输入类型：economic_logic / alpha_expression / paper_report / improvement_direction
+  input:
+    type: "<输入类型>"
+    content: |
+      <输入内容>
+      - economic_logic: 经济学逻辑描述
+      - alpha_expression: 已有的 Alpha 表达式代码
+      - paper_report: 论文/研报标题和核心发现
+      - improvement_direction: 改进方向说明
+
+  primary_goal: "<主要研究目标>"
+  source: "<来源：论文/研报/论坛/已有Alpha>"
+  hypothesis: "<核心假设：一句话说明经济机制>"
+  economic_mechanism: |
+    <详细的经济机制链式推导>
+    例如：信息不对称 → 分析师优先获取信息 → 研报情绪反映预期 → 市场消化滞后 → 收益可预测
+
+constraints:
+  dataset_id: "<数据集ID>"
+  region: "<区域>"
+  universe: "<股票池>"
+  delay: <延迟天数>
+  sharpe_target: <Sharpe目标>
+  fitness_target: <Fitness目标>
+  turnover_range: [<最小值>, <最大值>]
+  prod_corr_max: <Prod Corr上限>
+
+quality_standards:
+  atom_structure: true  # 单数据集结构
+  economic_interpretability: true  # 经济可解释性
+  no_linear_combination: true  # 禁止线性组合
+  single_mechanism: true  # 单一主机制

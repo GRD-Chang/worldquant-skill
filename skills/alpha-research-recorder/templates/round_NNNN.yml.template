@@ -1,0 +1,96 @@
+# =====================================================
+# 轮次记录模板 (YAML格式 - 极简版)
+# =====================================================
+# 使用：复制并重命名为 round_0001.yml
+# 核心原则：聚焦经济学分析
+# =====================================================
+
+round:
+  number: <轮次编号>
+  status: "completed"
+
+# ============================================
+# ⭐ 阶段1: 表达式生成
+# ============================================
+operator_number: <本轮表达式使用的operator数量>
+expression_generation:
+  # 输入类型（来自 session_metadata.yml）
+  input:
+    type: "<economic_logic / alpha_expression / paper_report / improvement_direction>"
+    content: "<输入内容>"
+
+  # ⭐ 核心字段：经济学分析（必须详细）
+  economic_analysis:
+    primary_mechanism: "<动量/反转/质量/情绪/流动性/估值>"
+    hypothesis: "<经济学假设链式推导（3-5步）>"
+    risk_premium_source: "<风险溢价来源（至少2个：信息不对称/行为偏差/市场摩擦）>"
+    market_regime: "<适用市场环境>"
+    time_horizon: "<短期/中期/长期>（具体天数）"
+
+  # 8个表达式
+  expressions:
+    - idx: 1
+      code: "<表达式代码>"
+      economic_explanation: "<经济学解释>"
+
+    # ... 表达式 2-8 结构相同 ...
+
+# ============================================
+# 阶段2: 因子回测
+# ============================================
+backtest:
+  config:
+    neutralization: "<SLOW/FAST/RAM/CROWDING/SLOW_AND_FAST>"
+    neutralization_rationale: "<中性化选择理由>"
+
+  results:
+    - expression_idx: 1
+      alpha_id: "<Alpha ID>"
+      sharpe: <值>
+      fitness: <值>
+      turnover: <值>
+    # ... 表达式 2-8 结果 ...
+
+# ============================================
+# ⭐ 阶段3: 因子评估
+# ============================================
+evaluation:
+  detailed_results:
+    - alpha_id: "<Alpha ID>"
+      overall_decision: "PASS"  # PASS / FAIL
+      # ⭐ 核心字段：经济学解释
+      economic_interpretation:
+        strong_points:
+          - "<强点1 + 经济学解释>"
+        potential_concerns:
+          - "<问题 + 经济学原因>"
+    # ... 其他 Alpha 评估结果 ...
+
+  final_decisions:
+    - alpha_id: "<Alpha ID>"
+      decision: "COMPLETE"
+      alpha_record:
+        template: "<因子模板>"
+        economic_rationale: "<经济学逻辑概述>"
+
+# ============================================
+# ⭐ 核心字段：轮次总结（必须详细）
+# ============================================
+round_summary:
+  key_findings:
+    - "<关键发现>"
+
+  # ⭐ 核心字段：经济学洞察（必须详细）
+  economic_insights:
+    validated_hypotheses:
+      - "<已验证假设1 + 证据>"
+    failed_hypotheses:
+      - "<失败假设1 + 经济学原因>"
+
+  lessons_learned:
+    - "<经验教训（经济学角度）>"
+
+  next_round_plan:
+    should_continue: false  # true / false
+    next_hypotheses: []
+    optimization_focus: []
